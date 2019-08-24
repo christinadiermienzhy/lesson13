@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lesson13</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/*	const student={
+			name:'Ivan',
+			surname: 'Petrov',
+			age: '20',
+			sex: 'male',
+			marks:[10,2,5,0,10],
+			attendance:[true,true, true, false, true],
+			getFullName (){
+				return this.name+' '+this.surname;
+			},
+			getAverageMark(){
+				return this.marks.reduce((sum, mark)=> (sum+=mark))/this.marks.length;
+			},
+			getAverageAttendance(){
+				return this.attendance.filter(item=>item).length/this.attendance.length;
+			}
+		}
+		console.log(student.getAverageMark());
+		console.log(student.getAverageAttendance());
+	function Student (name, surname, sex, bday){
+		this.name=name;
+		this.surname=surname;
+		this.sex=sex;
+		this.bday=bday;
+	}
+	 const student2= new Student('Aleksei','Ivanov','male','13/01/1985');
+	 console.log(student2);*/
+
+	 function Student (name, surname, sex, bday){
+		this.name=name;
+		this.surname=surname;
+		this.sex=sex;
+		this.bday=bday;
+		this.marks=[];
+		this.attendance=[];
+	}
+	Student.prototype.getAverageMark=function(sum, mark){
+		if (this.marks.length>0){
+			return (this.marks.reduce((sum, mark)=> (sum+=mark))/this.marks.length).toFixed(2);
+		} else {
+			return console.log("The student hasn't marks yet");
+		}
+		
+	}
+	Student.prototype.getAverageAttendance=function(){
+		if (this.attendance.length>0){
+			return (this.attendance.filter(item=>item).length/this.attendance.length).toFixed(2);
+		} else {
+			return console.log("The student hadn't visited any lessons yet");
+		}
+	}
+	Student.prototype.age=function(){
+		var today = new Date();
+  		var birthDate = new Date(this.bday);
+    	var age = today.getFullYear() - birthDate.getFullYear();
+    	var m = today.getMonth() - birthDate.getMonth();
+	    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+	    {
+	        age--;
+	    }
+	    return age;
+	}
+	Student.prototype.putMark=function(mark){
+		if ((this.marks.length<30) && (0<=mark)&&(mark<=10)){
+			return this.marks.push(mark);
+		} else {
+			if (this.marks.length===30){
+				return console.log('The student has alsready all marks!');
+			} else{
+				return console.log('Incorrect input, mark must be in 0 and 10');
+			}
+			
+		}
+	}
+	Student.prototype.present = function() {
+		if (this.attendance.length<30){
+			return this.attendance.push(true);
+		} else {
+			return console.log ('The student has alsready attended all lessons!');
+		}
+	};
+	Student.prototype.absent = function() {
+		if (this.attendance.length<30){
+			return this.attendance.push(false);
+		} else {
+			return console.log ('The student has alsready attended all lessons!');
+		}
+	};
+	Student.prototype.summary=function(){
+		if (this.getAverageMark()>9&& this.getAverageAttendance()>0.9){
+			return 'Ути какой молодчинка!';
+		} else if ((this.getAverageMark()<9&& this.getAverageAttendance()>0.9)||(this.getAverageMark()>9&& this.getAverageAttendance()<0.9)){
+				return 'Норм, но можно лучше';
+		} else{
+			return 'Редиска!';
+		}
+	}
+	const student3= new Student('Oksana','Ivanova','female','09/28/1990');
+	/*
+	 console.log (student3);
+	 console.log(student3.getAverageMark());
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(-1);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(9);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(25);
+	 student3.putMark(9);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(5);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(1);
+	 student3.putMark(10);
+	 student3.putMark(10);
+	 student3.putMark(3);
+	 student3.putMark(10);
+	 
+	 console.log (student3);
+	 console.log(student3.getAverageMark());
+	 console.log(student3.getAverageAttendance());
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.present();
+	student3.present();
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.absent();
+	student3.absent();
+	student3.absent();
+	student3.present();
+	student3.absent();
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.present();
+	student3.present();
+	student3.present();
+	student3.present();
+	student3.absent();
+	student3.absent();
+	student3.absent();
+	student3.absent();
+	student3.present();
+	student3.absent();	
+
+	console.log(student3.getAverageAttendance());
+	console.log(student3.age());
+	console.log(student3.summary());
+	console.log (student3);
+	*/
+	</script>
+</body>
+</html>
